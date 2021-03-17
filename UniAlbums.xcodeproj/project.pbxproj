@@ -3,18 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		898253211DEBA1B705DBDDED /* Pods_UniAlbumsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDC9A8C2375F8225991BBAE8 /* Pods_UniAlbumsTests.framework */; };
+		B3C123C2AEBB8C3EFE833C50 /* Pods_UniAlbums.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1796E21EAC95C032A36619E2 /* Pods_UniAlbums.framework */; };
+		BDFFC2CEC1F6A61EB87271CE /* Pods_UniAlbums_UniAlbumsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9A227C135150A36989497F /* Pods_UniAlbums_UniAlbumsUITests.framework */; };
+		F715464E2602264F00E2536A /* GroupId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F715464D2602264F00E2536A /* GroupId.swift */; };
+		F7154656260226B000E2536A /* FriendId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7154655260226B000E2536A /* FriendId.swift */; };
 		F72B3F3925FBC17600952279 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F3825FBC17600952279 /* AppDelegate.swift */; };
 		F72B3F3B25FBC17600952279 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F3A25FBC17600952279 /* SceneDelegate.swift */; };
-		F72B3F3D25FBC17600952279 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F3C25FBC17600952279 /* ViewController.swift */; };
-		F72B3F4025FBC17600952279 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F3E25FBC17600952279 /* Main.storyboard */; };
+		F72B3F3D25FBC17600952279 /* GroupList_AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F3C25FBC17600952279 /* GroupList_AlbumViewController.swift */; };
 		F72B3F4225FBC17900952279 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F4125FBC17900952279 /* Assets.xcassets */; };
 		F72B3F4525FBC17900952279 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F4325FBC17900952279 /* LaunchScreen.storyboard */; };
 		F72B3F5025FBC17900952279 /* UniAlbumsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F4F25FBC17900952279 /* UniAlbumsTests.swift */; };
 		F72B3F5B25FBC17900952279 /* UniAlbumsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F5A25FBC17900952279 /* UniAlbumsUITests.swift */; };
+		F72B3F7825FC47A200952279 /* GroupList_Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F7725FC47A200952279 /* GroupList_Album.storyboard */; };
+		F72B3F8025FC492B00952279 /* GroupListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F7F25FC492B00952279 /* GroupListTableViewCell.xib */; };
+		F72B3F8525FC495900952279 /* GroupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F8425FC495900952279 /* GroupListTableViewCell.swift */; };
+		F72B3F8A25FC4D9D00952279 /* EventList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F8925FC4D9D00952279 /* EventList.storyboard */; };
+		F72B3F8F25FC4DB100952279 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F8E25FC4DB100952279 /* EventListViewController.swift */; };
+		F72B3F9425FC4E0F00952279 /* EventListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F9325FC4E0F00952279 /* EventListTableViewCell.xib */; };
+		F72B3F9925FC4E1F00952279 /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3F9825FC4E1F00952279 /* EventListTableViewCell.swift */; };
+		F72B3F9E25FC523F00952279 /* Pictures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3F9D25FC523F00952279 /* Pictures.storyboard */; };
+		F72B3FA325FC524F00952279 /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FA225FC524F00952279 /* PicturesViewController.swift */; };
+		F72B3FA825FC6F3A00952279 /* Picture.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FA725FC6F3A00952279 /* Picture.xib */; };
+		F72B3FB225FC712000952279 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FB125FC712000952279 /* TabBar.storyboard */; };
+		F72B3FB725FC718200952279 /* GroupList_Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FB625FC718200952279 /* GroupList_Share.storyboard */; };
+		F72B3FBC25FC71F100952279 /* GroupList_ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FBB25FC71F100952279 /* GroupList_ShareViewController.swift */; };
+		F72B3FC125FC720900952279 /* Others.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FC025FC720900952279 /* Others.storyboard */; };
+		F72B3FC625FC721A00952279 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FC525FC721A00952279 /* OthersViewController.swift */; };
+		F72B3FCB25FC77BF00952279 /* SharePictures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FCA25FC77BF00952279 /* SharePictures.storyboard */; };
+		F72B3FD025FC77D500952279 /* SharePicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FCF25FC77D500952279 /* SharePicturesViewController.swift */; };
+		F72B3FD525FC7EE800952279 /* OthersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FD425FC7EE800952279 /* OthersTableViewCell.xib */; };
+		F72B3FDA25FC7EF800952279 /* OthersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FD925FC7EF800952279 /* OthersTableViewCell.swift */; };
+		F72B3FED25FC830700952279 /* AddFriend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FEC25FC830700952279 /* AddFriend.storyboard */; };
+		F72B3FF225FC831F00952279 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FF125FC831F00952279 /* AddFriendViewController.swift */; };
+		F72B3FF725FC86D900952279 /* SignOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FF625FC86D900952279 /* SignOut.storyboard */; };
+		F72B3FFC25FC86EB00952279 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FFB25FC86EB00952279 /* SignOutViewController.swift */; };
+		F72B401325FD04B200952279 /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B401225FD04B200952279 /* SelectFriendsViewController.swift */; };
+		F72B401825FD04C500952279 /* SelectFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B401725FD04C500952279 /* SelectFriends.storyboard */; };
+		F72B401D25FD05C000952279 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B401C25FD05C000952279 /* FriendsTableViewCell.swift */; };
+		F72B402225FD05D200952279 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B402125FD05D200952279 /* FriendsTableViewCell.xib */; };
+		F72B402725FD9C2C00952279 /* MakeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B402625FD9C2C00952279 /* MakeGroupViewController.swift */; };
+		F72B402C25FD9C3F00952279 /* MakeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B402B25FD9C3F00952279 /* MakeGroup.storyboard */; };
+		F72B403125FDA8D500952279 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B403025FDA8D500952279 /* PictureCollectionViewCell.swift */; };
+		F72B403625FDA8E900952279 /* PictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B403525FDA8E900952279 /* PictureCollectionViewCell.xib */; };
+		F72B405925FDDC7600952279 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B405825FDDC7600952279 /* EventModel.swift */; };
+		F72B407F25FF03CC00952279 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B407E25FF03CB00952279 /* SignUp.storyboard */; };
+		F72B408925FF041E00952279 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B408825FF041E00952279 /* SignIn.storyboard */; };
+		F72B408E25FF043000952279 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B408D25FF043000952279 /* SignUpViewController.swift */; };
+		F72B409325FF043E00952279 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B409225FF043E00952279 /* SignInViewController.swift */; };
+		F72B409F25FF166000952279 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F72B409725FF121300952279 /* GoogleService-Info.plist */; };
+		F76A40A326011D370084D452 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76A40A226011D370084D452 /* FriendModel.swift */; };
+		F76A40AB26011FAE0084D452 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76A40AA26011FAE0084D452 /* GroupModel.swift */; };
+		F76A40BC260139020084D452 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76A40BB260139020084D452 /* UIColor_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +79,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1796E21EAC95C032A36619E2 /* Pods_UniAlbums.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniAlbums.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		236C5FE17E596A2B79D2371A /* Pods-UniAlbums.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniAlbums.debug.xcconfig"; path = "Target Support Files/Pods-UniAlbums/Pods-UniAlbums.debug.xcconfig"; sourceTree = "<group>"; };
+		5015A344C1FEACAFF9EAC376 /* Pods-UniAlbums.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniAlbums.release.xcconfig"; path = "Target Support Files/Pods-UniAlbums/Pods-UniAlbums.release.xcconfig"; sourceTree = "<group>"; };
+		6D1C8C7FFEFA719B99BC0505 /* Pods-UniAlbums-UniAlbumsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniAlbums-UniAlbumsUITests.debug.xcconfig"; path = "Target Support Files/Pods-UniAlbums-UniAlbumsUITests/Pods-UniAlbums-UniAlbumsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		93C5C3A7513AAF136B269CEA /* Pods-UniAlbumsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniAlbumsTests.debug.xcconfig"; path = "Target Support Files/Pods-UniAlbumsTests/Pods-UniAlbumsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB9155A152CC18FF845E6607 /* Pods-UniAlbumsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniAlbumsTests.release.xcconfig"; path = "Target Support Files/Pods-UniAlbumsTests/Pods-UniAlbumsTests.release.xcconfig"; sourceTree = "<group>"; };
+		E75F912B9A4179FDD71EABA1 /* Pods-UniAlbums-UniAlbumsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniAlbums-UniAlbumsUITests.release.xcconfig"; path = "Target Support Files/Pods-UniAlbums-UniAlbumsUITests/Pods-UniAlbums-UniAlbumsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EA9A227C135150A36989497F /* Pods_UniAlbums_UniAlbumsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniAlbums_UniAlbumsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC9A8C2375F8225991BBAE8 /* Pods_UniAlbumsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniAlbumsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F715464D2602264F00E2536A /* GroupId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupId.swift; sourceTree = "<group>"; };
+		F7154655260226B000E2536A /* FriendId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendId.swift; sourceTree = "<group>"; };
 		F72B3F3525FBC17600952279 /* UniAlbums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniAlbums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72B3F3825FBC17600952279 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F72B3F3A25FBC17600952279 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F72B3F3C25FBC17600952279 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F72B3F3F25FBC17600952279 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F72B3F3C25FBC17600952279 /* GroupList_AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupList_AlbumViewController.swift; sourceTree = "<group>"; };
 		F72B3F4125FBC17900952279 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F72B3F4425FBC17900952279 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F72B3F4625FBC17900952279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +103,46 @@
 		F72B3F5625FBC17900952279 /* UniAlbumsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniAlbumsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F72B3F5A25FBC17900952279 /* UniAlbumsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniAlbumsUITests.swift; sourceTree = "<group>"; };
 		F72B3F5C25FBC17900952279 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F72B3F7725FC47A200952279 /* GroupList_Album.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupList_Album.storyboard; sourceTree = "<group>"; };
+		F72B3F7F25FC492B00952279 /* GroupListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupListTableViewCell.xib; sourceTree = "<group>"; };
+		F72B3F8425FC495900952279 /* GroupListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListTableViewCell.swift; sourceTree = "<group>"; };
+		F72B3F8925FC4D9D00952279 /* EventList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventList.storyboard; sourceTree = "<group>"; };
+		F72B3F8E25FC4DB100952279 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		F72B3F9325FC4E0F00952279 /* EventListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListTableViewCell.xib; sourceTree = "<group>"; };
+		F72B3F9825FC4E1F00952279 /* EventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewCell.swift; sourceTree = "<group>"; };
+		F72B3F9D25FC523F00952279 /* Pictures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pictures.storyboard; sourceTree = "<group>"; };
+		F72B3FA225FC524F00952279 /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
+		F72B3FA725FC6F3A00952279 /* Picture.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Picture.xib; sourceTree = "<group>"; };
+		F72B3FB125FC712000952279 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		F72B3FB625FC718200952279 /* GroupList_Share.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupList_Share.storyboard; sourceTree = "<group>"; };
+		F72B3FBB25FC71F100952279 /* GroupList_ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupList_ShareViewController.swift; sourceTree = "<group>"; };
+		F72B3FC025FC720900952279 /* Others.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Others.storyboard; sourceTree = "<group>"; };
+		F72B3FC525FC721A00952279 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
+		F72B3FCA25FC77BF00952279 /* SharePictures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SharePictures.storyboard; sourceTree = "<group>"; };
+		F72B3FCF25FC77D500952279 /* SharePicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePicturesViewController.swift; sourceTree = "<group>"; };
+		F72B3FD425FC7EE800952279 /* OthersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OthersTableViewCell.xib; sourceTree = "<group>"; };
+		F72B3FD925FC7EF800952279 /* OthersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersTableViewCell.swift; sourceTree = "<group>"; };
+		F72B3FEC25FC830700952279 /* AddFriend.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriend.storyboard; sourceTree = "<group>"; };
+		F72B3FF125FC831F00952279 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		F72B3FF625FC86D900952279 /* SignOut.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignOut.storyboard; sourceTree = "<group>"; };
+		F72B3FFB25FC86EB00952279 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
+		F72B401225FD04B200952279 /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFriendsViewController.swift; sourceTree = "<group>"; };
+		F72B401725FD04C500952279 /* SelectFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectFriends.storyboard; sourceTree = "<group>"; };
+		F72B401C25FD05C000952279 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		F72B402125FD05D200952279 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
+		F72B402625FD9C2C00952279 /* MakeGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeGroupViewController.swift; sourceTree = "<group>"; };
+		F72B402B25FD9C3F00952279 /* MakeGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MakeGroup.storyboard; sourceTree = "<group>"; };
+		F72B403025FDA8D500952279 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		F72B403525FDA8E900952279 /* PictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureCollectionViewCell.xib; sourceTree = "<group>"; };
+		F72B405825FDDC7600952279 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		F72B407E25FF03CB00952279 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		F72B408825FF041E00952279 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		F72B408D25FF043000952279 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		F72B409225FF043E00952279 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		F72B409725FF121300952279 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F76A40A226011D370084D452 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
+		F76A40AA26011FAE0084D452 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		F76A40BB260139020084D452 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C123C2AEBB8C3EFE833C50 /* Pods_UniAlbums.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898253211DEBA1B705DBDDED /* Pods_UniAlbumsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +166,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDFFC2CEC1F6A61EB87271CE /* Pods_UniAlbums_UniAlbumsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0955FC60DDCC8096B297447 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1796E21EAC95C032A36619E2 /* Pods_UniAlbums.framework */,
+				EA9A227C135150A36989497F /* Pods_UniAlbums_UniAlbumsUITests.framework */,
+				EDC9A8C2375F8225991BBAE8 /* Pods_UniAlbumsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8B321059A25020EE3C785B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				236C5FE17E596A2B79D2371A /* Pods-UniAlbums.debug.xcconfig */,
+				5015A344C1FEACAFF9EAC376 /* Pods-UniAlbums.release.xcconfig */,
+				6D1C8C7FFEFA719B99BC0505 /* Pods-UniAlbums-UniAlbumsUITests.debug.xcconfig */,
+				E75F912B9A4179FDD71EABA1 /* Pods-UniAlbums-UniAlbumsUITests.release.xcconfig */,
+				93C5C3A7513AAF136B269CEA /* Pods-UniAlbumsTests.debug.xcconfig */,
+				BB9155A152CC18FF845E6607 /* Pods-UniAlbumsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F72B3F2C25FBC17600952279 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +203,8 @@
 				F72B3F4E25FBC17900952279 /* UniAlbumsTests */,
 				F72B3F5925FBC17900952279 /* UniAlbumsUITests */,
 				F72B3F3625FBC17600952279 /* Products */,
+				D8B321059A25020EE3C785B0 /* Pods */,
+				D0955FC60DDCC8096B297447 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +221,20 @@
 		F72B3F3725FBC17600952279 /* UniAlbums */ = {
 			isa = PBXGroup;
 			children = (
+				F72B407D25FF03A600952279 /* Sign */,
+				F72B3FDE25FC80D900952279 /* Albums */,
+				F72B3FE425FC81AC00952279 /* SharePictures */,
+				F72B3FE925FC822100952279 /* Others */,
+				F72B404F25FDDBA800952279 /* Models */,
+				F72B3FE225FC814200952279 /* Xibs */,
+				F72B3FE325FC814B00952279 /* Views */,
+				F76A40B7260138E10084D452 /* Extension */,
+				F72B3FB125FC712000952279 /* TabBar.storyboard */,
 				F72B3F3825FBC17600952279 /* AppDelegate.swift */,
 				F72B3F3A25FBC17600952279 /* SceneDelegate.swift */,
-				F72B3F3C25FBC17600952279 /* ViewController.swift */,
-				F72B3F3E25FBC17600952279 /* Main.storyboard */,
 				F72B3F4125FBC17900952279 /* Assets.xcassets */,
 				F72B3F4325FBC17900952279 /* LaunchScreen.storyboard */,
+				F72B409725FF121300952279 /* GoogleService-Info.plist */,
 				F72B3F4625FBC17900952279 /* Info.plist */,
 			);
 			path = UniAlbums;
@@ -128,6 +258,167 @@
 			path = UniAlbumsUITests;
 			sourceTree = "<group>";
 		};
+		F72B3FDE25FC80D900952279 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3FE125FC811800952279 /* Storyboards */,
+				F72B3FDF25FC80EC00952279 /* ViewControllers */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		F72B3FDF25FC80EC00952279 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3F3C25FBC17600952279 /* GroupList_AlbumViewController.swift */,
+				F72B3F8E25FC4DB100952279 /* EventListViewController.swift */,
+				F72B3FA225FC524F00952279 /* PicturesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F72B3FE125FC811800952279 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3F7725FC47A200952279 /* GroupList_Album.storyboard */,
+				F72B3F8925FC4D9D00952279 /* EventList.storyboard */,
+				F72B3F9D25FC523F00952279 /* Pictures.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F72B3FE225FC814200952279 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3F7F25FC492B00952279 /* GroupListTableViewCell.xib */,
+				F72B3F9325FC4E0F00952279 /* EventListTableViewCell.xib */,
+				F72B3FA725FC6F3A00952279 /* Picture.xib */,
+				F72B3FD425FC7EE800952279 /* OthersTableViewCell.xib */,
+				F72B402125FD05D200952279 /* FriendsTableViewCell.xib */,
+				F72B403525FDA8E900952279 /* PictureCollectionViewCell.xib */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		F72B3FE325FC814B00952279 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3F8425FC495900952279 /* GroupListTableViewCell.swift */,
+				F72B3F9825FC4E1F00952279 /* EventListTableViewCell.swift */,
+				F72B403025FDA8D500952279 /* PictureCollectionViewCell.swift */,
+				F72B3FD925FC7EF800952279 /* OthersTableViewCell.swift */,
+				F72B401C25FD05C000952279 /* FriendsTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F72B3FE425FC81AC00952279 /* SharePictures */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3FE525FC81BE00952279 /* Storyboards */,
+				F72B3FE725FC81DD00952279 /* ViewControllers */,
+			);
+			path = SharePictures;
+			sourceTree = "<group>";
+		};
+		F72B3FE525FC81BE00952279 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3FB625FC718200952279 /* GroupList_Share.storyboard */,
+				F72B3FCA25FC77BF00952279 /* SharePictures.storyboard */,
+				F72B401725FD04C500952279 /* SelectFriends.storyboard */,
+				F72B402B25FD9C3F00952279 /* MakeGroup.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F72B3FE725FC81DD00952279 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3FBB25FC71F100952279 /* GroupList_ShareViewController.swift */,
+				F72B3FCF25FC77D500952279 /* SharePicturesViewController.swift */,
+				F72B401225FD04B200952279 /* SelectFriendsViewController.swift */,
+				F72B402625FD9C2C00952279 /* MakeGroupViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F72B3FE925FC822100952279 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3FEB25FC823D00952279 /* Storyboards */,
+				F72B3FEA25FC823400952279 /* ViewControllers */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		F72B3FEA25FC823400952279 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3FC525FC721A00952279 /* OthersViewController.swift */,
+				F72B3FF125FC831F00952279 /* AddFriendViewController.swift */,
+				F72B3FFB25FC86EB00952279 /* SignOutViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F72B3FEB25FC823D00952279 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F72B3FC025FC720900952279 /* Others.storyboard */,
+				F72B3FEC25FC830700952279 /* AddFriend.storyboard */,
+				F72B3FF625FC86D900952279 /* SignOut.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F72B404F25FDDBA800952279 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F715464D2602264F00E2536A /* GroupId.swift */,
+				F76A40AA26011FAE0084D452 /* GroupModel.swift */,
+				F72B405825FDDC7600952279 /* EventModel.swift */,
+				F7154655260226B000E2536A /* FriendId.swift */,
+				F76A40A226011D370084D452 /* FriendModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F72B407D25FF03A600952279 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				F72B408725FF03FC00952279 /* Storyboards */,
+				F72B408625FF03F000952279 /* ViewControllers */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		F72B408625FF03F000952279 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F72B408D25FF043000952279 /* SignUpViewController.swift */,
+				F72B409225FF043E00952279 /* SignInViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F72B408725FF03FC00952279 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F72B407E25FF03CB00952279 /* SignUp.storyboard */,
+				F72B408825FF041E00952279 /* SignIn.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F76A40B7260138E10084D452 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F76A40BB260139020084D452 /* UIColor_Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +426,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F72B3F5F25FBC17A00952279 /* Build configuration list for PBXNativeTarget "UniAlbums" */;
 			buildPhases = (
+				0F674BD78061C01EE93EE946 /* [CP] Check Pods Manifest.lock */,
 				F72B3F3125FBC17600952279 /* Sources */,
 				F72B3F3225FBC17600952279 /* Frameworks */,
 				F72B3F3325FBC17600952279 /* Resources */,
+				3E64104BF40AA1F35FD703B9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +445,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F72B3F6225FBC17A00952279 /* Build configuration list for PBXNativeTarget "UniAlbumsTests" */;
 			buildPhases = (
+				D49B6408ED22EC6C0979FB92 /* [CP] Check Pods Manifest.lock */,
 				F72B3F4725FBC17900952279 /* Sources */,
 				F72B3F4825FBC17900952279 /* Frameworks */,
 				F72B3F4925FBC17900952279 /* Resources */,
@@ -170,9 +464,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F72B3F6525FBC17A00952279 /* Build configuration list for PBXNativeTarget "UniAlbumsUITests" */;
 			buildPhases = (
+				0A1FA211C43AD2330D201D4A /* [CP] Check Pods Manifest.lock */,
 				F72B3F5225FBC17900952279 /* Sources */,
 				F72B3F5325FBC17900952279 /* Frameworks */,
 				F72B3F5425FBC17900952279 /* Resources */,
+				72304B688DF662A18EE35EEE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,9 +527,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72B3FA825FC6F3A00952279 /* Picture.xib in Resources */,
+				F72B402225FD05D200952279 /* FriendsTableViewCell.xib in Resources */,
+				F72B3FB225FC712000952279 /* TabBar.storyboard in Resources */,
+				F72B3F9425FC4E0F00952279 /* EventListTableViewCell.xib in Resources */,
 				F72B3F4525FBC17900952279 /* LaunchScreen.storyboard in Resources */,
+				F72B403625FDA8E900952279 /* PictureCollectionViewCell.xib in Resources */,
+				F72B3F9E25FC523F00952279 /* Pictures.storyboard in Resources */,
+				F72B3FCB25FC77BF00952279 /* SharePictures.storyboard in Resources */,
+				F72B3FF725FC86D900952279 /* SignOut.storyboard in Resources */,
+				F72B402C25FD9C3F00952279 /* MakeGroup.storyboard in Resources */,
+				F72B3F7825FC47A200952279 /* GroupList_Album.storyboard in Resources */,
 				F72B3F4225FBC17900952279 /* Assets.xcassets in Resources */,
-				F72B3F4025FBC17600952279 /* Main.storyboard in Resources */,
+				F72B3FC125FC720900952279 /* Others.storyboard in Resources */,
+				F72B401825FD04C500952279 /* SelectFriends.storyboard in Resources */,
+				F72B407F25FF03CC00952279 /* SignUp.storyboard in Resources */,
+				F72B3F8A25FC4D9D00952279 /* EventList.storyboard in Resources */,
+				F72B3FB725FC718200952279 /* GroupList_Share.storyboard in Resources */,
+				F72B3F8025FC492B00952279 /* GroupListTableViewCell.xib in Resources */,
+				F72B3FED25FC830700952279 /* AddFriend.storyboard in Resources */,
+				F72B409F25FF166000952279 /* GoogleService-Info.plist in Resources */,
+				F72B408925FF041E00952279 /* SignIn.storyboard in Resources */,
+				F72B3FD525FC7EE800952279 /* OthersTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +568,139 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A1FA211C43AD2330D201D4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UniAlbums-UniAlbumsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F674BD78061C01EE93EE946 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UniAlbums-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E64104BF40AA1F35FD703B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UniAlbums/Pods-UniAlbums-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UniAlbums/Pods-UniAlbums-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UniAlbums/Pods-UniAlbums-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72304B688DF662A18EE35EEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UniAlbums-UniAlbumsUITests/Pods-UniAlbums-UniAlbumsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UniAlbums-UniAlbumsUITests/Pods-UniAlbums-UniAlbumsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UniAlbums-UniAlbumsUITests/Pods-UniAlbums-UniAlbumsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D49B6408ED22EC6C0979FB92 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UniAlbumsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F72B3F3125FBC17600952279 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F72B3F3D25FBC17600952279 /* ViewController.swift in Sources */,
+				F72B3FDA25FC7EF800952279 /* OthersTableViewCell.swift in Sources */,
+				F72B3FD025FC77D500952279 /* SharePicturesViewController.swift in Sources */,
+				F7154656260226B000E2536A /* FriendId.swift in Sources */,
+				F72B3FBC25FC71F100952279 /* GroupList_ShareViewController.swift in Sources */,
+				F72B401D25FD05C000952279 /* FriendsTableViewCell.swift in Sources */,
+				F72B408E25FF043000952279 /* SignUpViewController.swift in Sources */,
+				F72B3F9925FC4E1F00952279 /* EventListTableViewCell.swift in Sources */,
+				F76A40AB26011FAE0084D452 /* GroupModel.swift in Sources */,
+				F72B3F8F25FC4DB100952279 /* EventListViewController.swift in Sources */,
+				F72B3F3D25FBC17600952279 /* GroupList_AlbumViewController.swift in Sources */,
+				F72B3FFC25FC86EB00952279 /* SignOutViewController.swift in Sources */,
 				F72B3F3925FBC17600952279 /* AppDelegate.swift in Sources */,
+				F715464E2602264F00E2536A /* GroupId.swift in Sources */,
+				F72B403125FDA8D500952279 /* PictureCollectionViewCell.swift in Sources */,
+				F72B3FC625FC721A00952279 /* OthersViewController.swift in Sources */,
+				F72B402725FD9C2C00952279 /* MakeGroupViewController.swift in Sources */,
+				F72B401325FD04B200952279 /* SelectFriendsViewController.swift in Sources */,
+				F72B3FA325FC524F00952279 /* PicturesViewController.swift in Sources */,
 				F72B3F3B25FBC17600952279 /* SceneDelegate.swift in Sources */,
+				F72B409325FF043E00952279 /* SignInViewController.swift in Sources */,
+				F72B405925FDDC7600952279 /* EventModel.swift in Sources */,
+				F76A40BC260139020084D452 /* UIColor_Extension.swift in Sources */,
+				F76A40A326011D370084D452 /* FriendModel.swift in Sources */,
+				F72B3F8525FC495900952279 /* GroupListTableViewCell.swift in Sources */,
+				F72B3FF225FC831F00952279 /* AddFriendViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +736,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F72B3F3E25FBC17600952279 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F72B3F3F25FBC17600952279 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F72B3F4325FBC17900952279 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -433,6 +865,7 @@
 		};
 		F72B3F6025FBC17A00952279 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 236C5FE17E596A2B79D2371A /* Pods-UniAlbums.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +885,7 @@
 		};
 		F72B3F6125FBC17A00952279 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5015A344C1FEACAFF9EAC376 /* Pods-UniAlbums.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +905,7 @@
 		};
 		F72B3F6325FBC17A00952279 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93C5C3A7513AAF136B269CEA /* Pods-UniAlbumsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +928,7 @@
 		};
 		F72B3F6425FBC17A00952279 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB9155A152CC18FF845E6607 /* Pods-UniAlbumsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +951,7 @@
 		};
 		F72B3F6625FBC17A00952279 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D1C8C7FFEFA719B99BC0505 /* Pods-UniAlbums-UniAlbumsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +972,7 @@
 		};
 		F72B3F6725FBC17A00952279 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E75F912B9A4179FDD71EABA1 /* Pods-UniAlbums-UniAlbumsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

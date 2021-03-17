@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fxQ-T0-JSJ">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--その他-->
+        <scene sceneID="gL7-td-Iy5">
+            <objects>
+                <viewController storyboardIdentifier="Others" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KEU-L3-prM" customClass="OthersViewController" customModule="UniAlbums" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nq8-Ru-Ast">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="djF-2b-McI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ntb-eD-e4J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="djF-2b-McI" firstAttribute="leading" secondItem="ntb-eD-e4J" secondAttribute="leading" id="45i-pA-Fxm"/>
+                            <constraint firstItem="ntb-eD-e4J" firstAttribute="bottom" secondItem="djF-2b-McI" secondAttribute="bottom" id="VCq-xW-haL"/>
+                            <constraint firstItem="djF-2b-McI" firstAttribute="top" secondItem="ntb-eD-e4J" secondAttribute="top" id="etR-Bf-xdh"/>
+                            <constraint firstItem="ntb-eD-e4J" firstAttribute="trailing" secondItem="djF-2b-McI" secondAttribute="trailing" id="h2w-zj-Tc4"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="その他" image="wrench.and.screwdriver" catalog="system" id="BW9-lh-NSp"/>
+                    <navigationItem key="navigationItem" title="その他" id="OiQ-0M-5Qf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="othersTableView" destination="djF-2b-McI" id="jtm-zl-pq8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HqF-qi-pz4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997.10144927536237" y="31.793478260869566"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QE4-Kb-FP5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fxQ-T0-JSJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VW0-3M-Xq4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KEU-L3-prM" kind="relationship" relationship="rootViewController" id="3lT-Io-o8C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WDB-MA-jQ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89.855072463768124" y="31.793478260869566"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="wrench.and.screwdriver" catalog="system" width="128" height="120"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Make Group View Controller-->
+        <scene sceneID="VQT-0N-yoP">
+            <objects>
+                <viewController storyboardIdentifier="MakeGroup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fAa-Aq-geF" customClass="MakeGroupViewController" customModule="UniAlbums" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qv1-Zm-34C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="グループ名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGP-sl-q6t">
+                                <rect key="frame" x="87" y="240" width="240" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Ul7-z6-6YQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVK-et-RSd">
+                                <rect key="frame" x="87" y="374" width="240" height="30"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="dde-LO-8b5"/>
+                                </constraints>
+                                <state key="normal" title="作成する"/>
+                                <connections>
+                                    <action selector="makeGroup:" destination="fAa-Aq-geF" eventType="touchUpInside" id="4Oi-x5-Q5V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dig-pM-YNq">
+                                <rect key="frame" x="87" y="60" width="240" height="120"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="1Np-re-T0J"/>
+                                    <constraint firstAttribute="height" constant="120" id="YzF-jF-gXy"/>
+                                </constraints>
+                                <state key="normal" title="トプ画を選択してください"/>
+                                <connections>
+                                    <action selector="selectTopImage:" destination="fAa-Aq-geF" eventType="touchUpInside" id="vye-Gz-8Sr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gZA-fp-QFw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dig-pM-YNq" firstAttribute="centerX" secondItem="qv1-Zm-34C" secondAttribute="centerX" id="BUj-Fz-54P"/>
+                            <constraint firstItem="dig-pM-YNq" firstAttribute="top" secondItem="gZA-fp-QFw" secondAttribute="top" constant="60" id="J01-zM-u86"/>
+                            <constraint firstItem="LGP-sl-q6t" firstAttribute="centerX" secondItem="qv1-Zm-34C" secondAttribute="centerX" id="TGm-Iq-MGJ"/>
+                            <constraint firstItem="LGP-sl-q6t" firstAttribute="top" secondItem="dig-pM-YNq" secondAttribute="bottom" constant="60" id="gRY-bN-wYf"/>
+                            <constraint firstItem="OVK-et-RSd" firstAttribute="centerX" secondItem="qv1-Zm-34C" secondAttribute="centerX" id="lid-qz-zWa"/>
+                            <constraint firstItem="OVK-et-RSd" firstAttribute="top" secondItem="LGP-sl-q6t" secondAttribute="bottom" constant="100" id="r1B-vZ-Uta"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="groupNameTextField" destination="LGP-sl-q6t" id="3bD-AZ-hDQ"/>
+                        <outlet property="makeButton" destination="OVK-et-RSd" id="bww-ne-lZC"/>
+                        <outlet property="topImageButton" destination="dig-pM-YNq" id="5l2-r6-o0A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VyH-ZM-3Uq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-120.28985507246378" y="57.880434782608702"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p3a-k8-BzH">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--グループを選択-->
+        <scene sceneID="4tp-Oe-4Lu">
+            <objects>
+                <viewController storyboardIdentifier="GroupList_Share" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rKF-K5-CXi" customClass="GroupList_ShareViewController" customModule="UniAlbums" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="com-U0-o7p">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kg9-c4-E2H">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FDN-qs-KZO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Kg9-c4-E2H" firstAttribute="leading" secondItem="FDN-qs-KZO" secondAttribute="leading" id="Kaj-nB-axe"/>
+                            <constraint firstAttribute="bottom" secondItem="Kg9-c4-E2H" secondAttribute="bottom" id="Puc-7I-0ab"/>
+                            <constraint firstItem="Kg9-c4-E2H" firstAttribute="top" secondItem="FDN-qs-KZO" secondAttribute="top" id="c9q-di-9du"/>
+                            <constraint firstItem="Kg9-c4-E2H" firstAttribute="trailing" secondItem="FDN-qs-KZO" secondAttribute="trailing" id="jEU-Fd-9R2"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="アルバムを作成する" image="plus.rectangle.fill.on.rectangle.fill" catalog="system" id="fDA-YS-dSa"/>
+                    <navigationItem key="navigationItem" title="グループを選択" id="zpl-TM-NXQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Tqy-fx-wkv">
+                            <connections>
+                                <action selector="makeGroup:" destination="rKF-K5-CXi" id="cvQ-64-XOl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="groupListTableView" destination="Kg9-c4-E2H" id="u2E-83-bcJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08x-Ng-X5t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113.0434782608697" y="76.630434782608702"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sXV-TS-C2b">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p3a-k8-BzH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DV8-U5-pre">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rKF-K5-CXi" kind="relationship" relationship="rootViewController" id="UEW-wn-P1O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ixK-Kh-3cl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="205.79710144927537" y="76.630434782608702"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus.rectangle.fill.on.rectangle.fill" catalog="system" width="128" height="96"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

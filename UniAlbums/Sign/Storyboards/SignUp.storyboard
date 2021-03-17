@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign Up View Controller-->
+        <scene sceneID="0iH-vQ-Jsh">
+            <objects>
+                <viewController storyboardIdentifier="SignUp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iz4-Sl-reb" customClass="SignUpViewController" customModule="UniAlbums" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SCS-tX-ZEk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="GgY-80-DbE">
+                                <rect key="frame" x="50" y="243" width="314" height="250"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hqM-JG-twE">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OKE-PA-wpq">
+                                        <rect key="frame" x="0.0" y="56" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード（6文字以上）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Ac-RM-Hp0">
+                                        <rect key="frame" x="0.0" y="112" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi1-5D-1kT">
+                                        <rect key="frame" x="0.0" y="168" width="314" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="登録する"/>
+                                        <connections>
+                                            <action selector="signUp:" destination="iz4-Sl-reb" eventType="touchUpInside" id="Eou-gR-TGP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGm-mM-01e">
+                                        <rect key="frame" x="0.0" y="220" width="314" height="30"/>
+                                        <state key="normal" title="既にアカウントをお持ちの方"/>
+                                        <connections>
+                                            <action selector="moveToSignIn:" destination="iz4-Sl-reb" eventType="touchUpInside" id="wWt-c7-nC7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Ck3-aL-R3S"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユニアルバム" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZB-B2-aIC">
+                                <rect key="frame" x="60" y="171" width="294" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BjT-Q5-8Ew"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nZB-B2-aIC" firstAttribute="leading" secondItem="BjT-Q5-8Ew" secondAttribute="leading" constant="60" id="0fk-BE-M5P"/>
+                            <constraint firstItem="GgY-80-DbE" firstAttribute="top" secondItem="nZB-B2-aIC" secondAttribute="bottom" constant="30" id="D37-I2-jHf"/>
+                            <constraint firstItem="GgY-80-DbE" firstAttribute="leading" secondItem="BjT-Q5-8Ew" secondAttribute="leading" constant="50" id="T0v-o9-SCN"/>
+                            <constraint firstItem="BjT-Q5-8Ew" firstAttribute="trailing" secondItem="nZB-B2-aIC" secondAttribute="trailing" constant="60" id="l6A-WP-C1C"/>
+                            <constraint firstItem="GgY-80-DbE" firstAttribute="centerY" secondItem="SCS-tX-ZEk" secondAttribute="centerY" id="sEz-Yd-Gsw"/>
+                            <constraint firstItem="BjT-Q5-8Ew" firstAttribute="trailing" secondItem="GgY-80-DbE" secondAttribute="trailing" constant="50" id="uy6-XG-gVZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="OKE-PA-wpq" id="UOJ-d6-JLN"/>
+                        <outlet property="nameTextField" destination="hqM-JG-twE" id="3nj-gW-css"/>
+                        <outlet property="passwordTextField" destination="8Ac-RM-Hp0" id="LtA-m4-Bke"/>
+                        <outlet property="signInButton" destination="nGm-mM-01e" id="GMm-OP-XaA"/>
+                        <outlet property="signUpButton" destination="pi1-5D-1kT" id="Zie-wo-RQG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cL-4q-ikz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-741" y="-36"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

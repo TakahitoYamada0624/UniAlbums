@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Friend View Controller-->
+        <scene sceneID="d4V-5A-atW">
+            <objects>
+                <viewController storyboardIdentifier="AddFriend" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qJe-RC-tJr" customClass="AddFriendViewController" customModule="UniAlbums" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jRe-Ga-1wL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたのユーザーナンバー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2b-a9-vnl">
+                                <rect key="frame" x="40" y="70" width="294" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hv-cM-1qt">
+                                <rect key="frame" x="40" y="101" width="334" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザーナンバー" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vf4-of-5Xr">
+                                <rect key="frame" x="40" y="131" width="278" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yq2-Ib-H9j">
+                                <rect key="frame" x="348" y="133" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="Z7r-iN-L1e"/>
+                                </constraints>
+                                <state key="normal" title="検索"/>
+                                <connections>
+                                    <action selector="searchUser:" destination="qJe-RC-tJr" eventType="touchUpInside" id="0W3-cY-Bo2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="y2s-AV-SOY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x2b-a9-vnl" firstAttribute="leading" secondItem="y2s-AV-SOY" secondAttribute="leading" constant="40" id="1Qr-eP-qjI"/>
+                            <constraint firstItem="vf4-of-5Xr" firstAttribute="top" secondItem="0Hv-cM-1qt" secondAttribute="bottom" constant="30" id="4Sw-ZP-TDS"/>
+                            <constraint firstItem="Yq2-Ib-H9j" firstAttribute="leading" secondItem="vf4-of-5Xr" secondAttribute="trailing" constant="30" id="80t-mU-5Lx"/>
+                            <constraint firstItem="vf4-of-5Xr" firstAttribute="leading" secondItem="y2s-AV-SOY" secondAttribute="leading" constant="40" id="E1u-3x-th7"/>
+                            <constraint firstItem="0Hv-cM-1qt" firstAttribute="leading" secondItem="y2s-AV-SOY" secondAttribute="leading" constant="40" id="FWe-gb-6Hw"/>
+                            <constraint firstItem="0Hv-cM-1qt" firstAttribute="top" secondItem="x2b-a9-vnl" secondAttribute="bottom" constant="10" id="O8D-64-neM"/>
+                            <constraint firstItem="y2s-AV-SOY" firstAttribute="trailing" secondItem="x2b-a9-vnl" secondAttribute="trailing" constant="80" id="YLq-zV-fvB"/>
+                            <constraint firstItem="x2b-a9-vnl" firstAttribute="top" secondItem="y2s-AV-SOY" secondAttribute="top" constant="70" id="YoI-ks-r5W"/>
+                            <constraint firstItem="y2s-AV-SOY" firstAttribute="trailing" secondItem="Yq2-Ib-H9j" secondAttribute="trailing" constant="20" id="Z02-33-EZw"/>
+                            <constraint firstItem="y2s-AV-SOY" firstAttribute="trailing" secondItem="0Hv-cM-1qt" secondAttribute="trailing" constant="40" id="ZKA-MA-j2u"/>
+                            <constraint firstItem="Yq2-Ib-H9j" firstAttribute="centerY" secondItem="vf4-of-5Xr" secondAttribute="centerY" id="koN-ce-Y3J"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchButton" destination="Yq2-Ib-H9j" id="bNW-tm-s3o"/>
+                        <outlet property="searchTextField" destination="vf4-of-5Xr" id="U5d-UF-EWk"/>
+                        <outlet property="uidLabel" destination="0Hv-cM-1qt" id="vbi-Da-coi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HPF-ae-2An" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226.08695652173915" y="10.597826086956523"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
