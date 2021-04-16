@@ -32,7 +32,6 @@ class AddFriendViewController: UIViewController {
                 guard let data = snapshot?.data() else {return}
                 let uid = data["userNumber"] as? String
                 self.uidLabel.text = uid
-                
             }
     }
     
@@ -97,11 +96,6 @@ class AddFriendViewController: UIViewController {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-
 }
 
 extension AddFriendViewController: UITextFieldDelegate {

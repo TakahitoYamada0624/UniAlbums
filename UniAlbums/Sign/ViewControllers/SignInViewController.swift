@@ -42,10 +42,6 @@ class SignInViewController: UIViewController {
     @IBAction func moveToSignUp(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
 }
 
 extension SignInViewController: UITextFieldDelegate {

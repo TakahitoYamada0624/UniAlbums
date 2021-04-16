@@ -14,6 +14,7 @@ class GroupList_ShareViewController: UIViewController {
     
     var groupIds = [GroupId]()
     var groupModels = [GroupModel]()
+    let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var groupListTableView: UITableView!
     
@@ -23,55 +24,61 @@ class GroupList_ShareViewController: UIViewController {
         groupListTableView.dataSource = self
         groupListTableView.delegate = self
         groupListTableView.register(UINib(nibName: "GroupListTableViewCell", bundle: nil), forCellReuseIdentifier: "GroupListTableViewCell")
+        groupListTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         
         fetchGroups()
     }
     
+    @objc func refreshTableView() {
+        fetchGroups()
+    }
+    
     @IBAction func makeGroup(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "SelectFriends", bundle: nil)
-        let selectFriends = storyboard.instantiateViewController(withIdentifier: "SelectFriends")
-        navigationController?.pushViewController(selectFriends, animated: true)
+        let storyboard = UIStoryboard(name: "MakeGroup", bundle: nil)
+        let makeGroup = storyboard.instantiateViewController(withIdentifier: "MakeGroup")
+        makeGroup.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(makeGroup, animated: true)
     }
     
     func fetchGroups() {
-        groupIds.removeAll()
+        groupModels.removeAll()
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        Firestore.firestore().collection("Users").document(uid)
+        let groupsRef = Firestore.firestore().collection("Users").document(uid)
             .collection("Groups")
-            .getDocuments { (snapshots, err) in
-                if let err = err {
-                    print("グループ情報の取得に失敗しました。\(err)")
-                    return
-                }
-                guard let documents = snapshots?.documents else {return}
-                for (num, document) in documents.enumerated() {
-                    let data = document.data()
-                    let groupId = GroupId(data: data)
-                    self.groupIds.append(groupId)
-                    if num == documents.count - 1 {
-                        self.fetchGroupInfo()
-                    }
-                }
+        groupsRef.getDocuments { (snapshot, err) in
+            if let err = err {
+                print("グループIDの取得に失敗しました。", err)
+                return
             }
+            let dispatchGroup = DispatchGroup()
+            let dispatchQueue = DispatchQueue(label: "queue")
+            snapshot?.documents.forEach({ (document) in
+                dispatchGroup.enter()
+                dispatchQueue.async(group: dispatchGroup) {  [weak self] in
+                    let data = document.data()
+                    guard let groupId = data["groupId"] as? String else {return}
+                    self?.fetchGroupInfo(groupId: groupId, dispatchGroup: dispatchGroup)
+                }
+            })
+            dispatchGroup.notify(queue: .main) {
+                self.groupListTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
     
-    func fetchGroupInfo() {
-        groupModels.removeAll()
-        for (num, groupID) in groupIds.enumerated() {
-            let groupId = groupID.groupId
-            Firestore.firestore().collection("Groups").document(groupId)
-                .getDocument { (snapshot, err) in
-                    if let err = err {
-                        print("グループ情報の取得に失敗しました。", err)
-                        return
-                    }
-                    guard let data = snapshot?.data() else {return}
-                    let group = GroupModel(data: data)
-                    self.groupModels.append(group)
-                    if num == self.groupIds.count - 1 {
-                        self.groupListTableView.reloadData()
-                    }
-                }
+    func fetchGroupInfo(groupId: String, dispatchGroup: DispatchGroup) {
+        let groupRef = Firestore.firestore().collection("Groups").document(groupId)
+        groupRef.getDocument { (snapshot, err) in
+            if let err = err {
+                print("グループ情報の取得に失敗しました。", err)
+                return
+            }
+            guard let data = snapshot?.data() else {return}
+            let group = GroupModel(data: data)
+            self.groupModels.append(group)
+            dispatchGroup.leave()
         }
     }
 }
@@ -84,7 +91,6 @@ extension GroupList_ShareViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupListTableViewCell") as! GroupListTableViewCell

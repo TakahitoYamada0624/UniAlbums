@@ -11,18 +11,21 @@ import FirebaseFirestore
 import FirebaseStorage
 import DKImagePickerController
 
-class SharePicturesViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class SharePicturesViewController: UIViewController, UITextFieldDelegate {
     
     let imagePickerController = UIImagePickerController()
     let dkPickerController = DKImagePickerController()
     let datePicker = UIDatePicker()
     let scrollView = UIScrollView()
-    var imageArr: [UIImage] = []
-    var imageUrl = [String]()
+    var imageArr = [UIImage]()
+    var imageStrings = [String]()
     var groupId: String = ""
+    let imagePicker = UIImagePickerController()
+    let randomString = RandomString()
+    var topImageString: String?
+    let indicator = UIActivityIndicatorView()
     
-    @IBOutlet weak var selectThumbnailButton: UIButton!
-    @IBOutlet weak var thumbnaimImageView: UIImageView!
+    @IBOutlet weak var thumbnailButton: UIButton!
     @IBOutlet weak var selectPicturesButton: UIButton!
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     @IBOutlet weak var dateTextField: UITextField!
@@ -36,17 +39,22 @@ class SharePicturesViewController: UIViewController, UIImagePickerControllerDele
         eventTextField.delegate = self
         picturesCollectionView.register(UINib(nibName: "PictureCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PictureCollectionViewCell")
         
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
         setToolBar()
         collectionViewLayout()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+        setupView()
+        setupIndicator()
+    }
+    
+    func setupView() {
+        thumbnailButton.layer.cornerRadius = 30
     }
     
     func setToolBar() {
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
-        let doneButton = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(saveDate))
+        let doneButton = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(setDate))
         let cancelButton = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(cancel))
         toolBar.setItems([cancelButton, doneButton], animated: true)
         dateTextField.inputView = datePicker
@@ -56,30 +64,21 @@ class SharePicturesViewController: UIViewController, UIImagePickerControllerDele
         datePicker.preferredDatePickerStyle = .wheels
     }
     
-    @objc func showKeyboard(_ notification: Notification) {
-        let userInfo = notification.userInfo
-        let keyboardSize = (userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {self.view.frame = CGRect(x: 0, y: -(keyboardSize.height), width: self.view.bounds.width, height: self.view.bounds.height)}, completion: nil)
-    }
-    
-    @objc func hideKeyboard(_ notification: Notification) {
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)}, completion: nil)
-    }
-    
     func collectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+//        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         picturesCollectionView.collectionViewLayout = layout
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    func setupIndicator() {
+        indicator.center = view.center
+        indicator.color = UIColor.rgba(red: 255, green: 153, blue: 0, alpha: 1)
+        indicator.style = .large
+        view.addSubview(indicator)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
         return true
     }
@@ -91,12 +90,6 @@ class SharePicturesViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func selectPictures(_ sender: Any) {
-        selectPic { (image) in
-            self.picturesCollectionView.reloadData()
-        }
-    }
-    
-    func selectPic(completion: @escaping (UIImage) -> ()) {
         imageArr.removeAll()
         dkPickerController.maxSelectableCount = 50
         dkPickerController.sourceType = .photo
@@ -107,15 +100,14 @@ class SharePicturesViewController: UIViewController, UIImagePickerControllerDele
                 asset.fetchOriginalImage { (image, info) in
                     if let image = image {
                         self.imageArr.append(image)
-                        completion(image)
-                        
+                        self.picturesCollectionView.reloadData()
                     }
                 }
             }
         }
     }
     
-    @objc func saveDate() {
+    @objc func setDate() {
         dateTextField.endEditing(true)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -130,94 +122,90 @@ class SharePicturesViewController: UIViewController, UIImagePickerControllerDele
         dateTextField.text = ""
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let editImage = info[.editedImage] as? UIImage{
-            thumbnaimImageView.setImage(editImage)
-        }else if let originalImage = info[.originalImage] as? UIImage{
-            thumbnaimImageView.setImage(originalImage)
-        }
-        thumbnaimImageView.contentMode = .scaleAspectFill
-        dismiss(animated: true, completion: nil)
-        
+    @IBAction func saveDataToFS(_ sender: Any) {
+        saveTopImage()
     }
     
-    @IBAction func addPicturesToAlbum(_ sender: Any) {
-        guard let image = thumbnaimImageView.image else {return}
-        if imageArr.count == 0 {return}
-        if dateTextField.text?.count == 0 {return}
-        if eventTextField.text?.count == 0 {return}
-        saveThumbnail(image: image)
-    }
-    
-    func saveThumbnail(image: UIImage) {
-        let fileName = NSUUID().uuidString
-        guard let uploadImage = image.jpegData(compressionQuality: 0.8) else {return}
-        let storageRef = Storage.storage().reference().child("thumbnail").child(fileName)
+    func saveTopImage() {
+        indicator.startAnimating()
+        let image = thumbnailButton.imageView?.image
+        guard let uploadImage = image?.jpegData(compressionQuality: 0.7) else {return}
+        let fileName = randomString.randomString(length: 20)
+        let storageRef = Storage.storage().reference().child("group_image").child(fileName)
         storageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
             if let err = err {
-                print("画像の保存に失敗しました。", err)
+                print("トプ画の保存に失敗しました。", err)
                 return
             }
             storageRef.downloadURL { (url, err) in
                 if let err = err {
-                    print("urlの取得に失敗しました。", err)
+                    print("urlのダウンロードに失敗しました。", err)
                     return
                 }
-                guard let urlString = url?.absoluteString else { return }
-                self.savePictures(thumbnailUrl: urlString)
+                guard let imageString = url?.absoluteString else {return}
+                self.topImageString = imageString
+                self.savePictures()
             }
         }
     }
     
-    func savePictures(thumbnailUrl: String) {
-        imageUrl.removeAll()
-        for (num, image) in imageArr.enumerated() {
-            let fileName = NSUUID().uuidString
-            guard let uploadImage = image.jpegData(compressionQuality: 0.8) else {return}
-            let storageRef = Storage.storage().reference().child("albums").child(fileName)
-            storageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
-                if let err = err {
-                    print("画像の保存に失敗しました。", err)
-                    return
-                }
-                storageRef.downloadURL { (url, err) in
+    func savePictures() {
+        let dispatchGroup = DispatchGroup()
+        let dispatchQueue = DispatchQueue(label: "queue")
+        
+        for image in imageArr {
+            dispatchGroup.enter()
+            dispatchQueue.async(group: dispatchGroup) { [weak self] in
+                
+                guard let fileName = self?.randomString.randomString(length: 20) else {return}
+                guard let uploadImage = image.jpegData(compressionQuality: 0.8) else {return}
+                let storageRef = Storage.storage().reference().child("album_images").child(fileName)
+                storageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
                     if let err = err {
-                        print("urlの取得に失敗しました。", err)
+                        print("写真の保存に失敗しました。",err)
                         return
                     }
-                    guard let urlString = url?.absoluteString else { return }
-                    self.imageUrl.append(urlString)
-                    if num == self.imageArr.count - 1{
-                        self.saveAlbumToFirestore(thumbnailUrl: thumbnailUrl)
+                    storageRef.downloadURL { (url, err) in
+                        if let err = err {
+                            print("urlのダウンロードに失敗しました。", err)
+                            return
+                        }
+                        guard let imageString = url?.absoluteString else {return}
+                        self?.imageStrings.append(imageString)
+                        dispatchGroup.leave()
                     }
                 }
             }
         }
+        dispatchGroup.notify(queue: .main) {
+            self.saveAlbumToFS()
+            self.indicator.stopAnimating()
+        }
     }
     
-    func saveAlbumToFirestore(thumbnailUrl: String) {
-        let albumId = randomString(length: 10)
+    func saveAlbumToFS() {
+        let albumId = randomString.randomString(length: 10)
+        let topImage = self.topImageString
+        let event = eventTextField.text
+        let date = dateTextField.text
+        
+        let albumRef = Firestore.firestore().collection("Groups").document(groupId)
+            .collection("Albums").document(albumId)
+        
         let data = [
             "albumId": albumId,
-            "date": dateTextField.text,
-            "event": eventTextField.text,
-            "thumbnailString": thumbnailUrl,
-            "picturesString": imageUrl
+            "thumbnailString": topImage,
+            "picturesString": imageStrings,
+            "event": event,
+            "date": date
         ] as [String : Any]
-        Firestore.firestore().collection("Groups").document(groupId)
-            .collection("Albums").document(albumId)
-            .setData(data) { (err) in
-                if let err = err {
-                    print("アルバム情報の保存に失敗しました。", err)
-                    return
-                }
-                self.navigationController?.popViewController(animated: true)
+        albumRef.setData(data) { (err) in
+            if let err = err {
+                print("アルバムの保存に失敗しました。", err)
+                return
             }
-    }
-    
-    func randomString(length: Int) -> String{
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<length).map{ _ in letters.randomElement()! })
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -227,7 +215,8 @@ extension SharePicturesViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        let width = view.bounds.size.width / 3 - 20
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -235,9 +224,17 @@ extension SharePicturesViewController: UICollectionViewDataSource, UICollectionV
         cell.image = imageArr[indexPath.row]
         return cell
     }
-    
 }
 
-
-
-
+extension SharePicturesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editImage = info[.editedImage] as? UIImage {
+            thumbnailButton.setImage(editImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            thumbnailButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        thumbnailButton.imageView?.contentMode = .scaleAspectFill
+        thumbnailButton.clipsToBounds = true
+        dismiss(animated: true, completion: nil)
+    }
+}

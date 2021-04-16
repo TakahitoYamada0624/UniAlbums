@@ -27,5 +27,4 @@ class SignOutViewController: UIViewController {
             print("サインアウトに失敗しました。")
         }
     }
-    
 }

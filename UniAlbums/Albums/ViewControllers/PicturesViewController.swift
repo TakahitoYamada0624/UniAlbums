@@ -10,6 +10,11 @@ import UIKit
 class PicturesViewController: UIViewController {
     
     var picturesString = [String]()
+    var event: String? {
+        didSet {
+            navigationItem.title = event
+        }
+    }
     
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
@@ -21,6 +26,7 @@ class PicturesViewController: UIViewController {
         picturesCollectionView.dataSource = self
         picturesCollectionView.delegate = self
         collectionViewLayout()
+        
     }
     
     func collectionViewLayout() {
@@ -28,7 +34,6 @@ class PicturesViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         picturesCollectionView.collectionViewLayout = layout
     }
-    
 }
 
 extension PicturesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

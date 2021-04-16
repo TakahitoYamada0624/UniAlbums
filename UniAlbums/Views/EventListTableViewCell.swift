@@ -18,6 +18,8 @@ class EventListTableViewCell: UITableViewCell {
         didSet {
             guard let url = URL(string: thumbnailString ?? "") else {return}
             Nuke.loadImage(with: url, into: thumbnailImageView)
+            
+            thumbnailImageView.layer.cornerRadius = 30
         }
     }
     

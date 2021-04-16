@@ -42,12 +42,10 @@
 		F72B3FF225FC831F00952279 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FF125FC831F00952279 /* AddFriendViewController.swift */; };
 		F72B3FF725FC86D900952279 /* SignOut.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B3FF625FC86D900952279 /* SignOut.storyboard */; };
 		F72B3FFC25FC86EB00952279 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B3FFB25FC86EB00952279 /* SignOutViewController.swift */; };
-		F72B401325FD04B200952279 /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B401225FD04B200952279 /* SelectFriendsViewController.swift */; };
-		F72B401825FD04C500952279 /* SelectFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B401725FD04C500952279 /* SelectFriends.storyboard */; };
+		F72B401325FD04B200952279 /* MakeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B401225FD04B200952279 /* MakeGroupViewController.swift */; };
+		F72B401825FD04C500952279 /* MakeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B401725FD04C500952279 /* MakeGroup.storyboard */; };
 		F72B401D25FD05C000952279 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B401C25FD05C000952279 /* FriendsTableViewCell.swift */; };
 		F72B402225FD05D200952279 /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B402125FD05D200952279 /* FriendsTableViewCell.xib */; };
-		F72B402725FD9C2C00952279 /* MakeGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B402625FD9C2C00952279 /* MakeGroupViewController.swift */; };
-		F72B402C25FD9C3F00952279 /* MakeGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F72B402B25FD9C3F00952279 /* MakeGroup.storyboard */; };
 		F72B403125FDA8D500952279 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B403025FDA8D500952279 /* PictureCollectionViewCell.swift */; };
 		F72B403625FDA8E900952279 /* PictureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72B403525FDA8E900952279 /* PictureCollectionViewCell.xib */; };
 		F72B405925FDDC7600952279 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B405825FDDC7600952279 /* EventModel.swift */; };
@@ -59,6 +57,9 @@
 		F76A40A326011D370084D452 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76A40A226011D370084D452 /* FriendModel.swift */; };
 		F76A40AB26011FAE0084D452 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76A40AA26011FAE0084D452 /* GroupModel.swift */; };
 		F76A40BC260139020084D452 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76A40BB260139020084D452 /* UIColor_Extension.swift */; };
+		F7715AF22605C241000B5768 /* ViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7715AF12605C241000B5768 /* ViewController_Extension.swift */; };
+		F7715AF72605D4CC000B5768 /* TextField_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7715AF62605D4CC000B5768 /* TextField_Extension.swift */; };
+		F77EF864261AB10000ECA098 /* RandomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EF863261AB10000ECA098 /* RandomString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,12 +127,10 @@
 		F72B3FF125FC831F00952279 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		F72B3FF625FC86D900952279 /* SignOut.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignOut.storyboard; sourceTree = "<group>"; };
 		F72B3FFB25FC86EB00952279 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
-		F72B401225FD04B200952279 /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFriendsViewController.swift; sourceTree = "<group>"; };
-		F72B401725FD04C500952279 /* SelectFriends.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectFriends.storyboard; sourceTree = "<group>"; };
+		F72B401225FD04B200952279 /* MakeGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeGroupViewController.swift; sourceTree = "<group>"; };
+		F72B401725FD04C500952279 /* MakeGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MakeGroup.storyboard; sourceTree = "<group>"; };
 		F72B401C25FD05C000952279 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		F72B402125FD05D200952279 /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
-		F72B402625FD9C2C00952279 /* MakeGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeGroupViewController.swift; sourceTree = "<group>"; };
-		F72B402B25FD9C3F00952279 /* MakeGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MakeGroup.storyboard; sourceTree = "<group>"; };
 		F72B403025FDA8D500952279 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		F72B403525FDA8E900952279 /* PictureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PictureCollectionViewCell.xib; sourceTree = "<group>"; };
 		F72B405825FDDC7600952279 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -143,6 +142,9 @@
 		F76A40A226011D370084D452 /* FriendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
 		F76A40AA26011FAE0084D452 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		F76A40BB260139020084D452 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		F7715AF12605C241000B5768 /* ViewController_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_Extension.swift; sourceTree = "<group>"; };
+		F7715AF62605D4CC000B5768 /* TextField_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField_Extension.swift; sourceTree = "<group>"; };
+		F77EF863261AB10000ECA098 /* RandomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,11 +226,11 @@
 				F72B407D25FF03A600952279 /* Sign */,
 				F72B3FDE25FC80D900952279 /* Albums */,
 				F72B3FE425FC81AC00952279 /* SharePictures */,
-				F72B3FE925FC822100952279 /* Others */,
+				F72B3FE925FC822100952279 /* Menu */,
 				F72B404F25FDDBA800952279 /* Models */,
 				F72B3FE225FC814200952279 /* Xibs */,
 				F72B3FE325FC814B00952279 /* Views */,
-				F76A40B7260138E10084D452 /* Extension */,
+				F76A40B7260138E10084D452 /* Extensions */,
 				F72B3FB125FC712000952279 /* TabBar.storyboard */,
 				F72B3F3825FBC17600952279 /* AppDelegate.swift */,
 				F72B3F3A25FBC17600952279 /* SceneDelegate.swift */,
@@ -236,6 +238,7 @@
 				F72B3F4325FBC17900952279 /* LaunchScreen.storyboard */,
 				F72B409725FF121300952279 /* GoogleService-Info.plist */,
 				F72B3F4625FBC17900952279 /* Info.plist */,
+				F77EF863261AB10000ECA098 /* RandomString.swift */,
 			);
 			path = UniAlbums;
 			sourceTree = "<group>";
@@ -326,8 +329,7 @@
 			children = (
 				F72B3FB625FC718200952279 /* GroupList_Share.storyboard */,
 				F72B3FCA25FC77BF00952279 /* SharePictures.storyboard */,
-				F72B401725FD04C500952279 /* SelectFriends.storyboard */,
-				F72B402B25FD9C3F00952279 /* MakeGroup.storyboard */,
+				F72B401725FD04C500952279 /* MakeGroup.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -337,19 +339,18 @@
 			children = (
 				F72B3FBB25FC71F100952279 /* GroupList_ShareViewController.swift */,
 				F72B3FCF25FC77D500952279 /* SharePicturesViewController.swift */,
-				F72B401225FD04B200952279 /* SelectFriendsViewController.swift */,
-				F72B402625FD9C2C00952279 /* MakeGroupViewController.swift */,
+				F72B401225FD04B200952279 /* MakeGroupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		F72B3FE925FC822100952279 /* Others */ = {
+		F72B3FE925FC822100952279 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				F72B3FEB25FC823D00952279 /* Storyboards */,
 				F72B3FEA25FC823400952279 /* ViewControllers */,
 			);
-			path = Others;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		F72B3FEA25FC823400952279 /* ViewControllers */ = {
@@ -411,12 +412,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		F76A40B7260138E10084D452 /* Extension */ = {
+		F76A40B7260138E10084D452 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				F76A40BB260139020084D452 /* UIColor_Extension.swift */,
+				F7715AF12605C241000B5768 /* ViewController_Extension.swift */,
+				F7715AF62605D4CC000B5768 /* TextField_Extension.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,11 +539,10 @@
 				F72B3F9E25FC523F00952279 /* Pictures.storyboard in Resources */,
 				F72B3FCB25FC77BF00952279 /* SharePictures.storyboard in Resources */,
 				F72B3FF725FC86D900952279 /* SignOut.storyboard in Resources */,
-				F72B402C25FD9C3F00952279 /* MakeGroup.storyboard in Resources */,
 				F72B3F7825FC47A200952279 /* GroupList_Album.storyboard in Resources */,
 				F72B3F4225FBC17900952279 /* Assets.xcassets in Resources */,
 				F72B3FC125FC720900952279 /* Others.storyboard in Resources */,
-				F72B401825FD04C500952279 /* SelectFriends.storyboard in Resources */,
+				F72B401825FD04C500952279 /* MakeGroup.storyboard in Resources */,
 				F72B407F25FF03CC00952279 /* SignUp.storyboard in Resources */,
 				F72B3F8A25FC4D9D00952279 /* EventList.storyboard in Resources */,
 				F72B3FB725FC718200952279 /* GroupList_Share.storyboard in Resources */,
@@ -684,21 +686,23 @@
 				F72B408E25FF043000952279 /* SignUpViewController.swift in Sources */,
 				F72B3F9925FC4E1F00952279 /* EventListTableViewCell.swift in Sources */,
 				F76A40AB26011FAE0084D452 /* GroupModel.swift in Sources */,
+				F7715AF22605C241000B5768 /* ViewController_Extension.swift in Sources */,
 				F72B3F8F25FC4DB100952279 /* EventListViewController.swift in Sources */,
+				F77EF864261AB10000ECA098 /* RandomString.swift in Sources */,
 				F72B3F3D25FBC17600952279 /* GroupList_AlbumViewController.swift in Sources */,
 				F72B3FFC25FC86EB00952279 /* SignOutViewController.swift in Sources */,
 				F72B3F3925FBC17600952279 /* AppDelegate.swift in Sources */,
 				F715464E2602264F00E2536A /* GroupId.swift in Sources */,
 				F72B403125FDA8D500952279 /* PictureCollectionViewCell.swift in Sources */,
 				F72B3FC625FC721A00952279 /* OthersViewController.swift in Sources */,
-				F72B402725FD9C2C00952279 /* MakeGroupViewController.swift in Sources */,
-				F72B401325FD04B200952279 /* SelectFriendsViewController.swift in Sources */,
+				F72B401325FD04B200952279 /* MakeGroupViewController.swift in Sources */,
 				F72B3FA325FC524F00952279 /* PicturesViewController.swift in Sources */,
 				F72B3F3B25FBC17600952279 /* SceneDelegate.swift in Sources */,
 				F72B409325FF043E00952279 /* SignInViewController.swift in Sources */,
 				F72B405925FDDC7600952279 /* EventModel.swift in Sources */,
 				F76A40BC260139020084D452 /* UIColor_Extension.swift in Sources */,
 				F76A40A326011D370084D452 /* FriendModel.swift in Sources */,
+				F7715AF72605D4CC000B5768 /* TextField_Extension.swift in Sources */,
 				F72B3F8525FC495900952279 /* GroupListTableViewCell.swift in Sources */,
 				F72B3FF225FC831F00952279 /* AddFriendViewController.swift in Sources */,
 			);

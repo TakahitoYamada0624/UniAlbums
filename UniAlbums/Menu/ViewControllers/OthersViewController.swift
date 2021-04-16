@@ -9,9 +9,7 @@ import UIKit
 
 class OthersViewController: UIViewController {
     
-    let menu = [
-        "友達追加", "サインアウト"
-    ]
+    let menu = ["友達追加", "サインアウト"]
     
     @IBOutlet weak var othersTableView: UITableView!
     
@@ -21,7 +19,6 @@ class OthersViewController: UIViewController {
         othersTableView.dataSource = self
         othersTableView.delegate = self
         othersTableView.register(UINib(nibName: "OthersTableViewCell", bundle: nil), forCellReuseIdentifier: "OthersTableViewCell")
-        
     }
 }
 
