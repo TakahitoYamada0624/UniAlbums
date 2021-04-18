@@ -11,7 +11,7 @@
         <!--Make Group View Controller-->
         <scene sceneID="W84-EI-hNf">
             <objects>
-                <viewController storyboardIdentifier="MakeGroup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BZO-DH-1wm" customClass="MakeGroupViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MakeGroup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BZO-DH-1wm" customClass="MakeGroupViewController" customModule="UniAlbums" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gzh-9d-cds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

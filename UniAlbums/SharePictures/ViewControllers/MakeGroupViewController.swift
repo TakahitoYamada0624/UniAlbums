@@ -102,7 +102,7 @@ class MakeGroupViewController: UIViewController {
     
     func saveGroupDataToFS(imageString: String) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        selectedFriends = [uid]
+        selectedFriends.append(uid)
         let name = groupNameTextField.text
         let groupId = randomString.randomString(length: 10)
         let data = [
