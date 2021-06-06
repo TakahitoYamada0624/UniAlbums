@@ -11,25 +11,29 @@ import FirebaseFirestore
 import FirebaseStorage
 import DKImagePickerController
 
-class SharePicturesViewController: UIViewController, UITextFieldDelegate {
+class SharePicturesViewController: UIViewController {
     
+    var groupId: String = ""
     let imagePickerController = UIImagePickerController()
     let dkPickerController = DKImagePickerController()
     let datePicker = UIDatePicker()
     let scrollView = UIScrollView()
     var imageArr = [UIImage]()
     var imageStrings = [String]()
-    var groupId: String = ""
     let imagePicker = UIImagePickerController()
     let randomString = RandomString()
     var topImageString: String?
     let indicator = UIActivityIndicatorView()
+    var topImageDidNotSet:Bool = true
+    let storageCom = Storage_com()
+    let firebase = Firebase()
     
     @IBOutlet weak var thumbnailButton: UIButton!
     @IBOutlet weak var selectPicturesButton: UIButton!
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var eventTextField: UITextField!
+    @IBOutlet weak var addPicturesButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +42,12 @@ class SharePicturesViewController: UIViewController, UITextFieldDelegate {
         picturesCollectionView.delegate = self
         eventTextField.delegate = self
         picturesCollectionView.register(UINib(nibName: "PictureCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PictureCollectionViewCell")
+        dateTextField.delegate = self
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        
+        scrollView.backgroundColor = UIColor.rgba(red: 197, green: 149, blue: 107, alpha: 0.3)
         
         setToolBar()
         collectionViewLayout()
@@ -50,6 +57,8 @@ class SharePicturesViewController: UIViewController, UITextFieldDelegate {
     
     func setupView() {
         thumbnailButton.layer.cornerRadius = 30
+        addPicturesButton.isEnabled = false
+        addPicturesButton.backgroundColor = UIColor.rgba(red: 255, green: 153, blue: 0, alpha: 0.3)
     }
     
     func setToolBar() {
@@ -66,7 +75,6 @@ class SharePicturesViewController: UIViewController, UITextFieldDelegate {
     
     func collectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         picturesCollectionView.collectionViewLayout = layout
     }
@@ -90,20 +98,51 @@ class SharePicturesViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func selectPictures(_ sender: Any) {
-        imageArr.removeAll()
         dkPickerController.maxSelectableCount = 50
         dkPickerController.sourceType = .photo
         dkPickerController.showsCancelButton = true
         present(dkPickerController, animated: true, completion: nil)
+        selectPicturess()
+    }
+    
+    private func selectPicturess() {
+        let dispatchGroup = DispatchGroup()
+        var images = [UIImage]()
         dkPickerController.didSelectAssets = { (assets: [DKAsset]) in
+            if assets.count == 0 {
+                print("count", assets.count)
+                self.picturesCollectionView.reloadData()
+                return
+            }
             for asset in assets {
+                dispatchGroup.enter()
                 asset.fetchOriginalImage { (image, info) in
                     if let image = image {
-                        self.imageArr.append(image)
-                        self.picturesCollectionView.reloadData()
+                        images.append(image)
+                        print("ok1")
+                        dispatchGroup.leave()
                     }
                 }
             }
+            dispatchGroup.notify(queue: .main) {
+                self.imageArr = images
+                self.picturesCollectionView.reloadData()
+                self.checkButtonIsEnabled()
+            }
+        }
+    }
+    
+    func checkButtonIsEnabled() {
+        let eventIsEmpty = eventTextField.text?.isEmpty ?? false
+        let dateIsEmpty = dateTextField.text?.isEmpty ?? false
+        let imageArrIsEmpty = imageArr.count <= 0
+        
+        if eventIsEmpty || dateIsEmpty || imageArrIsEmpty || topImageDidNotSet {
+            addPicturesButton.isEnabled = false
+            addPicturesButton.backgroundColor = UIColor.rgba(red: 255, green: 153, blue: 0, alpha: 0.3)
+        }else{
+            addPicturesButton.isEnabled = true
+            addPicturesButton.backgroundColor = UIColor.rgba(red: 255, green: 153, blue: 0, alpha: 1)
         }
     }
     
@@ -115,6 +154,8 @@ class SharePicturesViewController: UIViewController, UITextFieldDelegate {
         dateFormatter.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
         dateFormatter.dateStyle = DateFormatter.Style.medium
         dateTextField.text = dateFormatter.string(from: datePicker.date)
+        
+        checkButtonIsEnabled()
     }
     
     @objc func cancel() {
@@ -123,90 +164,30 @@ class SharePicturesViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveDataToFS(_ sender: Any) {
-        saveTopImage()
-    }
-    
-    func saveTopImage() {
-        indicator.startAnimating()
-        let image = thumbnailButton.imageView?.image
-        guard let uploadImage = image?.jpegData(compressionQuality: 0.7) else {return}
-        let fileName = randomString.randomString(length: 20)
-        let storageRef = Storage.storage().reference().child("group_image").child(fileName)
-        storageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
-            if let err = err {
-                print("トプ画の保存に失敗しました。", err)
-                return
-            }
-            storageRef.downloadURL { (url, err) in
-                if let err = err {
-                    print("urlのダウンロードに失敗しました。", err)
-                    return
-                }
-                guard let imageString = url?.absoluteString else {return}
-                self.topImageString = imageString
-                self.savePictures()
-            }
-        }
-    }
-    
-    func savePictures() {
-        let dispatchGroup = DispatchGroup()
-        let dispatchQueue = DispatchQueue(label: "queue")
-        
-        for image in imageArr {
-            dispatchGroup.enter()
-            dispatchQueue.async(group: dispatchGroup) { [weak self] in
-                
-                guard let fileName = self?.randomString.randomString(length: 20) else {return}
-                guard let uploadImage = image.jpegData(compressionQuality: 0.8) else {return}
-                let storageRef = Storage.storage().reference().child("album_images").child(fileName)
-                storageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
-                    if let err = err {
-                        print("写真の保存に失敗しました。",err)
-                        return
-                    }
-                    storageRef.downloadURL { (url, err) in
-                        if let err = err {
-                            print("urlのダウンロードに失敗しました。", err)
-                            return
-                        }
-                        guard let imageString = url?.absoluteString else {return}
-                        self?.imageStrings.append(imageString)
-                        dispatchGroup.leave()
-                    }
-                }
-            }
-        }
-        dispatchGroup.notify(queue: .main) {
-            self.saveAlbumToFS()
-            self.indicator.stopAnimating()
-        }
+        saveAlbumToFS()
     }
     
     func saveAlbumToFS() {
-        let albumId = randomString.randomString(length: 10)
-        let topImage = self.topImageString
-        let event = eventTextField.text
-        let date = dateTextField.text
+        guard let image = thumbnailButton.imageView?.image else {return}
+        let groupID = self.groupId
+        guard let event = eventTextField.text else {return}
+        guard let date = dateTextField.text else {return}
         
-        let albumRef = Firestore.firestore().collection("Groups").document(groupId)
-            .collection("Albums").document(albumId)
-        
-        let data = [
-            "albumId": albumId,
-            "thumbnailString": topImage,
-            "picturesString": imageStrings,
-            "event": event,
-            "date": date
-        ] as [String : Any]
-        albumRef.setData(data) { (err) in
-            if let err = err {
-                print("アルバムの保存に失敗しました。", err)
-                return
+        storageCom.saveImage(image: image, childName: "group_images") { (urlString) in
+            
+            self.storageCom.saveImages(images: self.imageArr) { (urlStrings) in
+                
+                self.firebase.saveAlbum(groupID: groupID, event: event, date: date, topImageStr: urlString, imagesStr: urlStrings) { (bool) in
+                    
+                    if bool == true {
+                        self.navigationController?.popViewController(animated: true)
+                    }else{
+                    }
+                }
             }
-            self.navigationController?.popViewController(animated: true)
         }
     }
+    
 }
 
 extension SharePicturesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -235,6 +216,14 @@ extension SharePicturesViewController: UIImagePickerControllerDelegate, UINaviga
         }
         thumbnailButton.imageView?.contentMode = .scaleAspectFill
         thumbnailButton.clipsToBounds = true
+        topImageDidNotSet = false
+        checkButtonIsEnabled()
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SharePicturesViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        checkButtonIsEnabled()
     }
 }

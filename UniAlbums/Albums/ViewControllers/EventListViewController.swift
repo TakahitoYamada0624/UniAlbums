@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 class EventListViewController: UIViewController {
     
+    let firebase = Firebase()
     var groupId: String = ""
     var events = [EventModel]()
     
@@ -22,29 +23,23 @@ class EventListViewController: UIViewController {
         eventListTableView.delegate = self
         eventListTableView.register(UINib(nibName: "EventListTableViewCell", bundle: nil), forCellReuseIdentifier: "EventListTableViewCell")
         
-        getAlbum()
+        fetchAlbum()
     }
     
-    func getAlbum() {
-        events.removeAll()
-        let albumsRef = Firestore.firestore().collection("Groups").document(groupId)
-            .collection("Albums")
-        albumsRef.getDocuments { (snapshot, err) in
-            if let err = err {
-                print("アルバムの取得に失敗しました。", err)
-                return
-            }
-            guard let documents = snapshot?.documents else {return}
-            for (num, document) in documents.enumerated() {
-                let data = document.data()
-                let event = EventModel(data: data)
-                self.events.append(event)
-                if num == documents.count - 1 {
-                    self.eventListTableView.reloadData()
-                }
-            }
+    func fetchAlbum() {
+        firebase.fetchAlbums(groupId: groupId) { (events) in
+            self.events = events
+            self.eventListTableView.reloadData()
         }
     }
+    
+    func refetchAlbum() {
+        firebase.fetchAlbums(groupId: groupId) { (events) in
+            self.events = events
+            self.eventListTableView.reloadData()
+        }
+    }
+    
 }
 
 extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -58,17 +53,19 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell", for: indexPath) as!EventListTableViewCell
-        cell.thumbnailString = events[indexPath.row].thumbnailString
-        cell.event = events[indexPath.row].event
-        cell.date = events[indexPath.row].date
+        let event = events[indexPath.row]
+        cell.thumbnailString = event.thumbnailString
+        cell.event = event.event
+        cell.date = event.date
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Pictures", bundle: nil)
         let pictures = storyboard.instantiateViewController(withIdentifier: "Pictures") as! PicturesViewController
-        pictures.event = events[indexPath.row].event
-        pictures.picturesString = events[indexPath.row].picturesString
+        let event = events[indexPath.row]
+        pictures.event = event.event
+        pictures.picturesString = event.picturesString
         navigationController?.pushViewController(pictures, animated: true)
     }
     

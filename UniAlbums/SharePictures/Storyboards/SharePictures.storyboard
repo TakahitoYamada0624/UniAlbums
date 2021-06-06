@@ -44,7 +44,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.90588235294117647" green="0.81568627450980391" blue="0.66274509803921566" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="yva-Ls-cYL" secondAttribute="trailing" constant="60" id="04L-65-Hmw"/>
                                     <constraint firstItem="O5P-DH-5Sa" firstAttribute="centerY" secondItem="6U8-wJ-lg5" secondAttribute="centerY" id="27p-fg-EZV"/>
@@ -78,10 +78,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QEH-pk-FtE">
-                                <rect key="frame" x="0.0" y="656" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="616" width="414" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81r-QO-wjc">
-                                        <rect key="frame" x="147" y="25" width="120" height="30"/>
+                                        <rect key="frame" x="147" y="45" width="120" height="30"/>
                                         <color key="backgroundColor" red="0.90196078430000004" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="opw-VR-jH2"/>
@@ -95,12 +95,12 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="81r-QO-wjc" firstAttribute="centerY" secondItem="QEH-pk-FtE" secondAttribute="centerY" id="5JZ-PH-ya9"/>
-                                    <constraint firstAttribute="height" constant="80" id="Njz-fj-Mko"/>
+                                    <constraint firstAttribute="height" constant="120" id="Njz-fj-Mko"/>
                                     <constraint firstItem="81r-QO-wjc" firstAttribute="centerX" secondItem="QEH-pk-FtE" secondAttribute="centerX" id="f59-JR-Pps"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z7F-2O-eQw">
-                                <rect key="frame" x="0.0" y="274" width="414" height="382"/>
+                                <rect key="frame" x="0.0" y="274" width="414" height="342"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kyf-n9-J9C">
                                     <size key="itemSize" width="128" height="128"/>
@@ -141,6 +141,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="addPicturesButton" destination="81r-QO-wjc" id="Z39-1r-Ayz"/>
                         <outlet property="dateTextField" destination="aCa-Xd-aRs" id="xVX-ZR-Zhv"/>
                         <outlet property="eventTextField" destination="yva-Ls-cYL" id="CQy-Wu-rSd"/>
                         <outlet property="picturesCollectionView" destination="Z7F-2O-eQw" id="dDU-jO-uJd"/>

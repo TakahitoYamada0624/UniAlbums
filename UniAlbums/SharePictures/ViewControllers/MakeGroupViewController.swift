@@ -12,12 +12,16 @@ import FirebaseStorage
 
 class MakeGroupViewController: UIViewController {
     
+    let firebase = Firebase()
+    let storage = Storage_com()
     let indicator = UIActivityIndicatorView()
     let randomString = RandomString()
     var selectedFriends = [String]()
     let imagePicker = UIImagePickerController()
     var friends = [FriendModel]()
     let sectionTitle = ["メンバーを選択"]
+    var topImageDidSet: Bool = true
+    private var topImageDidNotSet: Bool = true
     
     @IBOutlet weak var friendsTableView: UITableView!
     @IBOutlet weak var topImageButton: UIButton!
@@ -31,6 +35,8 @@ class MakeGroupViewController: UIViewController {
         friendsTableView.delegate = self
         friendsTableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendsTableViewCell")
         
+        groupNameTextField.delegate = self
+        
         setupView()
         setupIndicator()
         getFriendList()
@@ -41,6 +47,8 @@ class MakeGroupViewController: UIViewController {
     
     func setupView() {
         topImageButton.layer.cornerRadius = 25
+        makeButton.isEnabled = false
+        makeButton.backgroundColor = UIColor.rgba(red: 255, green: 153, blue: 0, alpha: 0.3)
     }
     
     func setupIndicator() {
@@ -51,21 +59,12 @@ class MakeGroupViewController: UIViewController {
     }
     
     func getFriendList() {
-        friends.removeAll()
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        let friendsRef = Firestore.firestore().collection("Users").document(uid)
-            .collection("Friends")
-        friendsRef.getDocuments { (snapshots, err) in
-            if let err = err {
-                print("フレンドリストの取得に失敗しました。", err)
-                return
-            }
-            snapshots?.documents.forEach({ (document) in
-                let data = document.data()
-                let friend = FriendModel(data: data)
-                self.friends.append(friend)
+        firebase.fetchUserMembers { (friendsID) in
+            
+            self.firebase.fetchMembers(membersID: friendsID) { (friends) in
+                self.friends = friends
                 self.friendsTableView.reloadData()
-            })
+            }
         }
     }
     
@@ -73,73 +72,40 @@ class MakeGroupViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    // MARK: グループ作成ボタンをタップ時
     @IBAction func registerGroup(_ sender: Any) {
         saveTopImageToStorage()
     }
     
     func saveTopImageToStorage() {
         indicator.startAnimating()
-        let topImage = topImageButton.imageView?.image
-        guard let uploadImage = topImage?.jpegData(compressionQuality: 0.8) else {return}
-        let fileName = NSUUID().uuidString
-        let storageRef = Storage.storage().reference().child("profile_image").child(fileName)
-        storageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
-            if let err = err {
-                print("プロフィール情報を保存できませんでした。", err)
-                return
-            }
-            storageRef.downloadURL { (url, err) in
-                if let err = err {
-                    print("urlを取得できませんでした。", err)
-                    return
+        guard let topImage = topImageButton.imageView?.image else {return}
+        guard let name = groupNameTextField.text else {return}
+        let members = selectedFriends
+        storage.saveImage(image: topImage, childName: "group_image") { (urlString) in
+            
+            self.firebase.saveGroup(name: name, topImageStr: urlString, members: members) { (bool) in
+                if bool == true {
+                    //MARK: 各ユーザへの追加をCloudFunctionで行う
+                    //さらにグループ作成できた旨をalertで出す
+                    self.indicator.stopAnimating()
                 }
-                guard let imageString = url?.absoluteString else {return}
-                self.saveGroupDataToFS(imageString: imageString)
             }
         }
     }
     
-    func saveGroupDataToFS(imageString: String) {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        selectedFriends.append(uid)
-        let name = groupNameTextField.text
-        let groupId = randomString.randomString(length: 10)
-        let data = [
-            "groupId": groupId,
-            "name": name,
-            "topImageString": imageString,
-            "members": selectedFriends,
-            "createdAt": Timestamp()
-        ] as [String : Any]
+    func checkMakeButtonIsEnabled() {
+        let groupNameIsEmpty = groupNameTextField.text?.isEmpty ?? false
+        let selectedFriendsArrIsEmpty = selectedFriends.count <= 0
         
-        let groupRef = Firestore.firestore().collection("Groups").document(groupId)
-        groupRef.setData(data) { (err) in
-            if let err = err {
-                print("グループの情報の保存に失敗しました。", err)
-                return
-            }
-            self.navigationController?.popViewController(animated: true)
-            self.addGroupToUsers(groupId: groupId)
+        if groupNameIsEmpty || topImageDidNotSet || selectedFriendsArrIsEmpty {
+            makeButton.isEnabled = false
+            makeButton.backgroundColor = UIColor.rgba(red: 255, green: 153, blue: 0, alpha: 0.3)
+        }else{
+            makeButton.isEnabled = true
+            makeButton.backgroundColor = UIColor.rgba(red: 255, green: 153, blue: 0, alpha: 1)
         }
     }
-   
-    func addGroupToUsers(groupId: String){
-        for (num, member) in selectedFriends.enumerated() {
-            Firestore.firestore().collection("Users").document(member)
-                .collection("Groups").document(groupId)
-                .setData(["groupId": groupId]) { (err) in
-                    if let err = err {
-                        print("グループ情報の保存に失敗しました。", err)
-                        return
-                    }
-                    if (num == self.selectedFriends.count - 1) {
-                        self.indicator.stopAnimating()
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                }
-        }
-    }
+    
 }
 
 extension MakeGroupViewController: UITableViewDataSource, UITableViewDelegate {
@@ -168,7 +134,7 @@ extension MakeGroupViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var selected: Bool = friends[indexPath.row].selected as? Bool ?? false
+        var selected = friends[indexPath.row].selected as? Bool ?? false
         let uid = friends[indexPath.row].uid
         if  selected == true {
             friends[indexPath.row].selected = false
@@ -181,6 +147,7 @@ extension MakeGroupViewController: UITableViewDataSource, UITableViewDelegate {
             selectedFriends.append(uid)
             friendsTableView.reloadData()
         }
+        checkMakeButtonIsEnabled()
     }
 }
 
@@ -193,6 +160,14 @@ extension MakeGroupViewController: UIImagePickerControllerDelegate, UINavigation
         }
         topImageButton.imageView?.contentMode = .scaleAspectFill
         topImageButton.clipsToBounds = true
+        topImageDidNotSet = false
+        checkMakeButtonIsEnabled()
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension MakeGroupViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        checkMakeButtonIsEnabled()
     }
 }

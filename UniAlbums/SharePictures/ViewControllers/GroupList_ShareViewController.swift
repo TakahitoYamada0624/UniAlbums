@@ -12,6 +12,7 @@ import FirebaseStorage
 
 class GroupList_ShareViewController: UIViewController {
     
+    let firebase = Firebase()
     var groupIds = [GroupId]()
     var groupModels = [GroupModel]()
     let refreshControl = UIRefreshControl()
@@ -27,11 +28,13 @@ class GroupList_ShareViewController: UIViewController {
         groupListTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         
+        groupListTableView.backgroundColor = UIColor.rgba(red: 197, green: 149, blue: 107, alpha: 0.3)
+        
         fetchGroups()
     }
     
     @objc func refreshTableView() {
-        fetchGroups()
+        refetchGroups()
     }
     
     @IBAction func makeGroup(_ sender: Any) {
@@ -42,45 +45,20 @@ class GroupList_ShareViewController: UIViewController {
     }
     
     func fetchGroups() {
-        groupModels.removeAll()
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        let groupsRef = Firestore.firestore().collection("Users").document(uid)
-            .collection("Groups")
-        groupsRef.getDocuments { (snapshot, err) in
-            if let err = err {
-                print("グループIDの取得に失敗しました。", err)
-                return
-            }
-            let dispatchGroup = DispatchGroup()
-            let dispatchQueue = DispatchQueue(label: "queue")
-            snapshot?.documents.forEach({ (document) in
-                dispatchGroup.enter()
-                dispatchQueue.async(group: dispatchGroup) {  [weak self] in
-                    let data = document.data()
-                    guard let groupId = data["groupId"] as? String else {return}
-                    self?.fetchGroupInfo(groupId: groupId, dispatchGroup: dispatchGroup)
-                }
-            })
-            dispatchGroup.notify(queue: .main) {
-                self.groupListTableView.reloadData()
-                self.refreshControl.endRefreshing()
-            }
+        firebase.fetchUserGroups { (groups) in
+            self.groupModels = groups
+            self.groupListTableView.reloadData()
         }
     }
     
-    func fetchGroupInfo(groupId: String, dispatchGroup: DispatchGroup) {
-        let groupRef = Firestore.firestore().collection("Groups").document(groupId)
-        groupRef.getDocument { (snapshot, err) in
-            if let err = err {
-                print("グループ情報の取得に失敗しました。", err)
-                return
-            }
-            guard let data = snapshot?.data() else {return}
-            let group = GroupModel(data: data)
-            self.groupModels.append(group)
-            dispatchGroup.leave()
+    func refetchGroups() {
+        firebase.fetchUserGroups { (groups) in
+            self.groupModels = groups
+            self.groupListTableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
+    
 }
 
 extension GroupList_ShareViewController: UITableViewDataSource, UITableViewDelegate {
@@ -94,8 +72,9 @@ extension GroupList_ShareViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupListTableViewCell") as! GroupListTableViewCell
-        cell.groupString = groupModels[indexPath.row].topImageString
-        cell.groupName = groupModels[indexPath.row].name
+        let group = groupModels[indexPath.row]
+        cell.groupString = group.topImageString
+        cell.groupName = group.name
         return cell
     }
     
@@ -103,6 +82,7 @@ extension GroupList_ShareViewController: UITableViewDataSource, UITableViewDeleg
         let storyboard = UIStoryboard(name: "SharePictures", bundle: nil)
         let sharePictures = storyboard.instantiateViewController(withIdentifier: "SharePictures") as! SharePicturesViewController
         sharePictures.groupId = groupModels[indexPath.row].groupId
+        sharePictures.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(sharePictures, animated: true)
     }
 }

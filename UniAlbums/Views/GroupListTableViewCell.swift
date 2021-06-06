@@ -26,4 +26,8 @@ class GroupListTableViewCell: UITableViewCell {
             groupNameLabel.text = groupName
         }
     }
+    
+    override func awakeFromNib() {
+        self.backgroundColor = .clear
+    }
 }
